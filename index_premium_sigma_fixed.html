@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAA SARALA COACHING CENTRE</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+margin:0;
+overflow-x:hidden;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1565c0);
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
+}
+animation:gradientBG 12s ease infinite;
+overflow-x:hidden;
+}
+
+header{
+background:#1565c0;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+section{
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+font-size:16px;
+}
+
+button{
+padding:12px;
+margin:10px 0;
+font-size:16px;
+}
+
+button{
+background:#1565c0;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+#letter{
+display:none;
+}
+.counter-card{
+background:#1565c0;
+color:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.counter-card:hover{
+transform:translateY(-5px);
+}
+
+header{
+position:relative;
+perspective:900px;
+overflow:hidden;
+}
+
+.cube{
+position:absolute;
+top:25px;
+right:20px;
+width:80px;
+height:80px;
+transform-style:preserve-3d;
+animation:rotateCube 4s linear infinite;
+z-index:20;
+}
+
+.cube div{
+position:absolute;
+width:80px;
+height:80px;
+background:rgba(255,255,255,.08);
+border:2px solid rgba(255,255,255,.8);
+border-radius:10px;
+box-shadow:0 0 20px #00e5ff,inset 0 0 15px rgba(255,255,255,.4);
+}
+
+.cube div:nth-child(1){transform:translateZ(40px);}
+.cube div:nth-child(2){transform:rotateY(180deg) translateZ(40px);}
+.cube div:nth-child(3){transform:rotateY(90deg) translateZ(40px);}
+.cube div:nth-child(4){transform:rotateY(-90deg) translateZ(40px);}
+.cube div:nth-child(5){transform:rotateX(90deg) translateZ(40px);}
+.cube div:nth-child(6){transform:rotateX(-90deg) translateZ(40px);}
+
+@keyframes rotateCube{
+from{transform:rotateX(0deg) rotateY(0deg);}
+to{transform:rotateX(360deg) rotateY(360deg);}
+}
+0%{
+transform:rotateX(0deg) rotateY(0deg);
+}
+100%{
+transform:rotateX(360deg) rotateY(360deg);
+}
+}
+.counter-card p{
+margin-top:10px;
+font-size:18px;
+}
+.sigma-ai{
+position:fixed;
+bottom:20px;
+right:20px;
+width:auto;
+display:inline-block;
+background:linear-gradient(135deg,#1565c0,#42a5f5);
+color:white;
+padding:15px 22px;
+border-radius:50px;
+font-size:18px;
+font-weight:bold;
+text-decoration:none;
+box-shadow:0 8px 20px rgba(0,0,0,.3);
+z-index:9999;
+animation:pulse 2s infinite;
+font-family:Arial,sans-serif;
+}
+
+.sigma-ai:hover{
+transform:scale(1.05);
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+.cube{
+position:absolute;
+top:20px;
+right:20px;
+width:70px;
+height:70px;
+transform-style:preserve-3d;
+animation:rotateCube 8s linear infinite;
+z-index:2;
+opacity:0.8;
+perspective:800px;
+}
+.cube div{
+position:absolute;
+width:70px;
+height:70px;
+background:rgba(255,255,255,.15);
+border:2px solid #fff;
+}
+
+.cube div:nth-child(1){transform:translateZ(35px);}
+.cube div:nth-child(2){transform:rotateY(180deg) translateZ(35px);}
+.cube div:nth-child(3){transform:rotateY(90deg) translateZ(35px);}
+.cube div:nth-child(4){transform:rotateY(-90deg) translateZ(35px);}
+.cube div:nth-child(5){transform:rotateX(90deg) translateZ(35px);}
+.cube div:nth-child(6){transform:rotateX(-90deg) translateZ(35px);}
+
+@keyframes rotateCube{
+0%{
+transform:rotateX(0deg) rotateY(0deg);
+}
+100%{
+transform:rotateX(360deg) rotateY(360deg);
+}
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+.sigma-ai{
+background:linear-gradient(135deg,#0f6fff,#35c3ff)!important;
+border-radius:60px!important;
+padding:16px 26px!important;
+font-weight:700!important;
+box-shadow:0 10px 30px rgba(15,111,255,.45)!important;
+animation:sigmaPulse 2s infinite!important;
+}
+@keyframes sigmaPulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+}
+#chatBox{
+backdrop-filter:blur(18px);
+background:rgba(255,255,255,.96)!important;
+border-radius:22px!important;
+border:1px solid rgba(255,255,255,.5);
+box-shadow:0 18px 45px rgba(0,0,0,.25)!important;
+}
+.sigmaQuick{
+display:inline-block;
+margin:6px;
+padding:10px 16px;
+border-radius:30px;
+background:#eef5ff;
+color:#0f6fff;
+font-weight:bold;
+}/* ===== GLOWING PARTICLE RAIN ===== */
+
+body{
+overflow-x:hidden;
+background-size:400% 400%;
+animation:gradientBG 12s ease infinite;
+}
+
+.particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:1;
+overflow:hidden;
+}
+
+.particles span{
+position:absolute;
+display:block;
+width:4px;
+height:4px;
+background:#ffffff;
+border-radius:50%;
+box-shadow:
+0 0 8px #00e5ff,
+0 0 15px #00e5ff,
+0 0 25px #00e5ff;
+animation:particleRain linear infinite;
+}
+
+.particles span:nth-child(1){left:5%;animation-duration:8s;animation-delay:0s;}
+.particles span:nth-child(2){left:10%;animation-duration:6s;animation-delay:1s;}
+.particles span:nth-child(3){left:15%;animation-duration:9s;animation-delay:2s;}
+.particles span:nth-child(4){left:20%;animation-duration:7s;}
+.particles span:nth-child(5){left:25%;animation-duration:10s;}
+.particles span:nth-child(6){left:30%;animation-duration:8s;}
+.particles span:nth-child(7){left:35%;animation-duration:6s;}
+.particles span:nth-child(8){left:40%;animation-duration:9s;}
+.particles span:nth-child(9){left:45%;animation-duration:7s;}
+.particles span:nth-child(10){left:50%;animation-duration:8s;}
+.particles span:nth-child(11){left:55%;animation-duration:10s;}
+.particles span:nth-child(12){left:60%;animation-duration:6s;}
+.particles span:nth-child(13){left:65%;animation-duration:8s;}
+.particles span:nth-child(14){left:70%;animation-duration:7s;}
+.particles span:nth-child(15){left:75%;animation-duration:9s;}
+.particles span:nth-child(16){left:80%;animation-duration:8s;}
+.particles span:nth-child(17){left:85%;animation-duration:10s;}
+.particles span:nth-child(18){left:90%;animation-duration:7s;}
+.particles span:nth-child(19){left:95%;animation-duration:8s;}
+.particles span:nth-child(20){left:98%;animation-duration:9s;}
+
+@keyframes particleRain{
+0%{
+transform:translateY(-120vh) scale(0);
+opacity:0;
+}
+10%{
+opacity:1;
+transform:scale(1);
+}
+100%{
+transform:translateY(120vh) scale(1);
+opacity:0;
+}
+}
+.ai-pulse{
+position:relative;
+width:220px;
+height:220px;
+margin:20px auto 30px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.ring{
+position:absolute;
+border-radius:50%;
+border:3px solid rgba(0,255,255,.25);
+animation:ripple 3s infinite;
+}
+
+.ring1{width:220px;height:220px;}
+.ring2{width:170px;height:170px;animation-delay:.5s;}
+.ring3{width:120px;height:120px;animation-delay:1s;}
+
+.core{
+width:90px;
+height:90px;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:42px;
+color:#00d9ff;
+box-shadow:0 0 30px #00e5ff;
+animation:glow 2s infinite;
+}
+
+
+@keyframes ripple{
+0%{transform:scale(.85);opacity:.2;}
+50%{opacity:.8;}
+100%{transform:scale(1.1);opacity:.2;}
+}
+
+@keyframes glow{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.08);}
+}
+/* Glass AI Title */
+
+.ai-title-box{
+position:relative;
+width:90%;
+max-width:420px;
+margin:30px auto;
+padding:25px;
+border-radius:28px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:2px solid #00e5ff;
+box-shadow:
+0 0 20px #00e5ff,
+0 0 40px #00e5ff,
+inset 0 0 20px rgba(255,255,255,.15);
+overflow:hidden;
+animation: floatCard 5s ease-in-out infinite, cardGlow 3s ease-in-out infinite;
+}
+
+.ai-title-box h1{
+margin:0;
+font-size:52px;
+line-height:1.1;
+color:#fff;
+text-shadow:
+0 0 10px #00e5ff,
+0 0 20px #00e5ff,
+0 0 40px #00e5ff;
+position:relative;
+z-index:2;
+}
+
+.ai-title-box::before{
+content:"";
+position:absolute;
+left:-100%;
+top:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(0,255,255,.7),
+transparent
+);
+animation:scanner 3s linear infinite;
+}
+
+.ai-title-box::after{
+content:"";
+position:absolute;
+inset:0;
+border-radius:25px;
+padding:2px;
+background:linear-gradient(90deg,#00e5ff,#00ffff,#00e5ff);
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+animation:borderGlow 4s linear infinite;
+}
+
+@keyframes scanner{
+0%{left:-100%;}
+100%{left:100%;}
+}
+
+@keyframes floatCard{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+}
+
+@keyframes cardGlow{
+0%,100%{
+box-shadow:
+0 0 20px #00e5ff,
+0 0 40px #00e5ff,
+inset 0 0 20px rgba(255,255,255,.15);
+}
+
+50%{
+box-shadow:
+0 0 40px #00ffff,
+0 0 80px #00ffff,
+inset 0 0 35px rgba(255,255,255,.25);
+}
+}
+
+@keyframes floatCard{
+0%,100%{
+transform:translateY(0px) scale(1);
+}
+
+25%{
+transform:translateY(-8px) scale(1.01);
+}
+
+50%{
+transform:translateY(-15px) scale(1.02);
+}
+
+75%{
+transform:translateY(-8px) scale(1.01);
+}
+}
+
+@keyframes borderGlow{
+0%{filter:hue-rotate(0deg);}
+100%{filter:hue-rotate(360deg);}
+}
+.info-box{
+width:90%;
+max-width:420px;
+margin:25px auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.info-item{
+background:rgba(0,20,60,.55);
+border:2px solid #00e5ff;
+border-radius:18px;
+padding:18px;
+color:#fff;
+font-size:22px;
+font-weight:bold;
+text-align:center;
+backdrop-filter:blur(15px);
+box-shadow:0 0 20px #00e5ff;
+animation:floatInfo 4s ease-in-out infinite;
+position:relative;
+overflow:hidden;
+}
+
+.info-item::before{
+content:"";
+position:absolute;
+left:-100%;
+top:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.5),
+transparent
+);
+animation:scanInfo 3s linear infinite;
+}
+
+@keyframes floatInfo{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+}
+.hud-box{
+width:92%;
+max-width:420px;
+margin:18px auto;
+padding:18px 20px;
+display:flex;
+align-items:center;
+gap:18px;
+background:rgba(0,20,60,.45);
+backdrop-filter:blur(20px);
+border:2px solid rgba(0,229,255,.6);
+border-radius:18px;
+box-shadow:
+0 0 15px #00e5ff,
+0 0 35px rgba(0,229,255,.4),
+inset 0 0 12px rgba(255,255,255,.08);
+position:relative;
+overflow:hidden;
+animation:hudFloat 5s ease-in-out infinite;
+}
+
+.hud-box::before{
+content:"";
+position:absolute;
+left:-120%;
+top:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+animation:hudScan 3s linear infinite;
+}
+
+.hud-icon{
+font-size:34px;
+z-index:2;
+}
+
+.hud-text{
+display:flex;
+flex-direction:column;
+z-index:2;
+}
+
+.hud-text span{
+font-size:21px;
+font-weight:bold;
+color:#fff;
+text-shadow:0 0 12px #00e5ff;
+}
+
+.hud-text small{
+margin-top:4px;
+font-size:15px;
+color:#8ffcff;
+letter-spacing:1px;
+}
+
+@keyframes hudFloat{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+}
+
+@keyframes hudScan{
+0%{left:-120%;}
+100%{left:120%;}
+}
+@keyframes scanInfo{
+0%{left:-100%;}
+100%{left:100%;}
+}
+/* ===== Futuristic AI Button ===== */
+
+.ai-btn{
+position:relative;
+padding:16px 40px;
+font-size:22px;
+font-weight:bold;
+color:#fff;
+background:linear-gradient(90deg,#009dff,#00ffff);
+border:none;
+border-radius:50px;
+cursor:pointer;
+overflow:hidden;
+box-shadow:
+0 0 20px #00e5ff,
+0 0 40px rgba(0,229,255,.7);
+animation:pulseGlow 2s ease-in-out infinite;
+}
+
+.ai-btn span{
+position:relative;
+z-index:2;
+}
+
+.ai-btn::before{
+content:"";
+position:absolute;
+left:50%;
+top:50%;
+width:20px;
+height:20px;
+background:rgba(255,255,255,.6);
+border-radius:50%;
+transform:translate(-50%,-50%) scale(0);
+animation:ripple 2s infinite;
+}
+
+.ai-btn::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.45),
+transparent
+);
+animation:shine 3s linear infinite;
+}
+
+@keyframes ripple{
+0%{
+transform:translate(-50%,-50%) scale(0);
+opacity:.8;
+}
+100%{
+transform:translate(-50%,-50%) scale(12);
+opacity:0;
+}
+}
+
+@keyframes pulseGlow{
+0%,100%{
+box-shadow:
+0 0 20px #00e5ff,
+0 0 40px #00e5ff;
+}
+
+50%{
+box-shadow:
+0 0 35px #00ffff,
+0 0 70px #00ffff;
+}
+}
+
+@keyframes shine{
+0%{
+left:-100%;
+}
+100%{
+left:100%;
+}
+}.future-notice{
+position:relative;
+width:90%;
+margin:20px auto;
+padding:25px;
+border-radius:20px;
+background:rgba(0,25,70,.45);
+border:2px solid #00e5ff;
+backdrop-filter:blur(15px);
+overflow:hidden;
+box-shadow:0 0 20px #00e5ff;
+animation:floatBox 4s ease-in-out infinite;
+}
+
+.scanner{
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+animation:scan 3s linear infinite;
+}
+
+.live{
+position:absolute;
+top:15px;
+right:15px;
+width:12px;
+height:12px;
+background:#00ff66;
+border-radius:50%;
+box-shadow:0 0 15px #00ff66;
+animation:blink 1s infinite;
+}
+
+.notice-text{
+font-size:24px;
+font-weight:bold;
+color:#fff;
+text-align:center;
+text-shadow:0 0 15px #00e5ff;
+}
+
+@keyframes scan{
+0%{left:-100%;}
+100%{left:100%;}
+}
+
+@keyframes floatBox{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+}
+
+@keyframes blink{
+50%{opacity:.3;}
+}
+</style>
+</head>
+<body>
+  <body>
+
+<div class="robot">
+    <div class="head"></div>
+    <div class="bodyRobot"></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+</div>
+
+<div class="particles">
+    ...
+</div>
+  <div class="particles">
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+<header>
+<section style="position:relative;background:#1565c0;color:white;text-align:center;padding:60px 20px;">
+  <div class="cube">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="ai-pulse">
+    <div class="ring ring1"></div>
+    <div class="ring ring2"></div>
+    <div class="ring ring3"></div>
+
+    <div class="core">
+        ⚡
+    </div>
+</div>
+<div class="ai-title-box">
+    <h1>
+        MAA SARALA<br>
+        COACHING<br>
+        CENTRE
+    </h1>
+</div>
+
+<div class="hud-box">
+    <div class="hud-icon">🎓</div>
+    <div class="hud-text">
+        <span>QUALITY EDUCATION</span>
+        <small>
+            Class 8 ✿ 9 ✿ 10 ✿ 11 ✿ 12 <br>
+            CBSE ✿ BSE Odisha ✿  CHSE Odisha  ✿ Other State Boards
+        </small>
+    </div>
+</div>
+
+<div class="hud-box">
+    <div class="hud-icon">💻</div>
+    <div class="hud-text">
+        <span>ONLINE & OFFLINE</span>
+        <small>Smart Classes Available</small>
+    </div>
+</div>
+<button class="ai-btn">
+    <span>🚀 Admission Open</span>
+</button>
+<section style="padding:20px;text-align:center;">
+<section style="background:white;padding:30px 10px;">
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:15px;text-align:center;">
+
+<div class="counter-card">
+<h2 id="students">0</h2>
+<p>👨‍🎓 Students</p>
+</div>
+
+<div class="counter-card">
+<h2 id="teachers">0</h2>
+<p>👨‍🏫 Teachers</p>
+</div>
+
+<div class="counter-card">
+<h2 id="results">0%</h2>
+<p>🏆 Success Rate</p>
+</div>
+
+<div class="counter-card">
+<h2 id="courses">0</h2>
+<p>📚 Courses</p>
+</div>
+
+</div>
+
+</section>
+
+<h2>Latest Notice</h2>
+
+<div id="studentNotice" class="future-notice">
+
+<div class="scanner"></div>
+
+<div class="live"></div>
+
+<div class="notice-text">
+No Notice Available
+</div>
+
+</div>
+</div>
+
+</section>
+</section>
+
+<section style="padding:20px;text-align:center;">
+
+
+
+<h2>Why Choose Us?</h2>
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📚 Experienced Teachers
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📝 Weekly Tests & Practice
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+🏆 Best Academic Results
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+💻 Online & Offline Classes
+</div>
+<section style="padding:20px;text-align:center;">
+
+<h2>Our Courses</h2>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📘 Class 8
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📗 Class 9
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📕 Class 10
+</div>
+
+</section>
+<!-- TEACHERS -->
+
+<section style="padding:20px;text-align:center;">
+
+<h2>Our Teachers</h2>
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+👨‍🏫 Experienced Faculty
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+👩‍🏫 Subject Expert Teachers
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section style="padding:20px;text-align:center;">
+
+<h2>Gallery</h2>
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+📸 Classroom Photos
+</div>
+
+<div style="background:white;padding:20px;margin:10px;border-radius:10px;color:black;font-size:20px;font-weight:bold;">
+🏆 Student Achievements
+</div>
+
+</section>
+<section style="padding:20px;text-align:center;">
+
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section style="padding:20px;text-align:center;">
+
+<h2>Contact Us</h2>
+
+<p>
+📍 Badapal, Marshaghai,<br>
+Kendrapara, Odisha - 754213
+</p>
+
+<p>
+📞 8249#@#₹#₹
+</p>
+
+<p>
+📧 maasaralacoaching@gmail.com
+</p>
+
+</section>
+<section style="padding:20px;">
+
+<h2 style="text-align:center;">Online Admission Form</h2>
+
+<div style="background:white;padding:20px;border-radius:10px;">
+
+<input type="text" id="name" placeholder="Student Name" style="width:100%;padding:12px;margin:5px 0;">
+
+<input type="text" id="father" placeholder="Father's Name" style="width:100%;padding:12px;margin:5px 0;">
+
+<input type="text" id="mobile" placeholder="Mobile Number" style="width:100%;padding:12px;margin:5px 0;">
+
+<select id="class" style="width:100%;padding:12px;margin:5px 0;">
+<option>Class 8</option>
+<option>Class 9</option>
+<option>Class 10</option>
+</select>
+
+<textarea id="address" placeholder="Address" style="width:100%;padding:12px;margin:5px 0;"></textarea>
+<button onclick="submitForm(); saveStudent();">
+
+Submit Admission Form
+</button>
+
+<p id="result"></p>
+
+</div>
+
+</section>
+
+<script>
+function submitForm(){
+
+let name=document.getElementById("name").value;
+
+document.getElementById("result").innerHTML=
+"✅ Admission Form Submitted Successfully for "+name;
+
+}
+</script>
+
+<!-- FOOTER -->
+
+<footer style="background:#111;color:white;text-align:center;padding:20px;">
+
+<h3>MAA SARALA COACHING CENTRE</h3>
+
+<p>
+Badapal, Marshaghai, Kendrapara, Odisha - 754213
+</p>
+
+<p>
+© 2026 All Rights Reserved
+</p>
+
+</footer>
+</section>
+<h1>MAA SARALA COACHING CENTRE</h1>
+</header>
+
+<section class="card">
+<h2>Contact Us</h2>
+
+<p>
+<b>Address:</b><br>
+Badapal, Marshaghai,<br>
+Kendrapara, Odisha - 754213
+</p>
+
+<p>
+<b>Phone:</b> 824#₹#@#₹
+</p>
+
+<p>
+<b>Email:</b> maasaralacoaching@gmail.com
+</p>
+</section>
+
+<section class="card">
+<h2>Admission Letter</h2>
+
+<input type="text" id="studentName" placeholder="Student Name">
+
+<input type="text" id="studentClass" placeholder="Class">
+
+<button onclick="generateLetter()">
+Generate Admission Letter
+</button>
+
+<div id="letter"></div>
+</section>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAlY7ZD0RrejzJ6SjdKmCbvIFz3llUq8_g",
+  authDomain: "coaching-60ae7.firebaseapp.com",
+  projectId: "coaching-60ae7",
+  storageBucket: "coaching-60ae7.firebasestorage.app",
+  messagingSenderId: "185295343567",
+  appId: "1:185295343567:web:6f73f78237140870588cba",
+  measurementId: "G-1LWWSE5DED"
+};
+
+const app = initializeApp(firebaseConfig);
+
+
+const auth = getAuth(app);
+
+window.adminLogin = function() {
+  const email = document.getElementById("adminEmail").value;
+const password = document.getElementById("adminPassword").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+  alert("Login Successful");
+  document.getElementById("adminLogin").style.display = "none";
+  document.getElementById("adminDashboard").style.display = "block";
+})
+    .catch((error) => {
+
+    alert(error.code);
+    console.log(error);
+});
+};
+</script>
+
+<script>
+function generateLetter(){
+
+let name=document.getElementById("studentName").value;
+let studentClass=document.getElementById("studentClass").value;
+
+document.getElementById("letter").style.display="block";
+
+document.getElementById("letter").innerHTML=`
+
+<h2>MAA SARALA COACHING CENTRE</h2>
+
+<p>
+Badapal, Marshaghai,<br>
+Kendrapara, Odisha - 754213
+</p>
+
+<h3>ADMISSION LETTER</h3>
+
+<p>Student Name: <b>${name}</b></p>
+
+<p>Class: <b>${studentClass}</b></p>
+
+<p>
+Congratulations! You have been admitted to
+MAA SARALA COACHING CENTRE.
+</p>
+<button onclick="downloadLetter()">
+Download Admission Letter
+</button>
+`;
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+async function downloadLetter() {
+
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+
+  let name = document.getElementById("studentName").value;
+  let studentClass = document.getElementById("studentClass").value;
+
+  doc.setFontSize(18);
+  doc.text("MAA SARALA COACHING CENTRE", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text("Badapal, Marshaghai, Kendrapara, Odisha - 754213", 20, 35);
+
+  doc.text("ADMISSION LETTER", 20, 55);
+
+  doc.text("Student Name: " + name, 20, 75);
+  doc.text("Class: " + studentClass, 20, 90);
+
+  doc.text("Congratulations! You have been admitted.", 20, 110);
+
+  doc.save("Admission_Letter.pdf");
+}
+</script>
+<section id="adminLogin" style="padding:20px;">
+
+<h2>Admin Login</h2>
+
+<input type="email" id="adminEmail" placeholder="Admin Email">
+
+<input type="password" id="adminPassword" placeholder="Password">
+
+<button onclick="adminLogin()">Login</button>
+
+</section>
+<section id="adminDashboard" style="padding:20px;display:none;">
+
+<h2>Admin Dashboard</h2>
+
+<div style="background:white;padding:20px;border-radius:10px;margin:10px;">
+
+<button>📚 Upload Notes</button>
+
+<br><br>
+
+<button>📝 View Admissions</button>
+
+<br><br>
+
+<button>👨‍🎓 Manage Students</button>
+
+<br><br>
+
+<button>👨‍🏫 Manage Teachers</button>
+
+<br><br>
+
+<input type="file" id="notesFile">
+
+<button onclick="uploadNotes()">
+📚 Upload Notes
+</button>
+
+<p id="notesStatus"></p>
+
+<div id="studentNotes"></div>
+<br><br>
+
+<button>💰 Fee Management</button>
+
+<br><br>
+
+<button>📊 Attendance Report</button>
+
+<br><br>
+
+<button>🚪 Logout</button>
+
+</div>
+<h3>📢 Upload Notice</h3>
+
+<textarea id="noticeText"
+placeholder="Write Notice Here"
+style="width:100%;height:120px;padding:10px;"></textarea>
+
+<br><br>
+
+<button onclick="uploadNotice()">
+Publish Notice
+</button>
+
+<p id="noticeStatus"></p>
+</section>
+<script>
+function uploadNotice(){
+
+let notice = document.getElementById("noticeText").value;
+
+localStorage.setItem("notice", notice);
+
+document.getElementById("noticeStatus").innerHTML =
+"✅ Notice Published Successfully";
+
+}
+</script>
+<script>
+window.onload = function(){
+
+let notice = localStorage.getItem("notice");
+
+if(notice){
+document.getElementById("studentNotice").innerHTML = notice;
+}
+
+}
+</script>
+<script>
+function animate(id,end,suffix=""){
+let i=0;
+let speed=Math.ceil(end/50);
+
+let timer=setInterval(function(){
+
+i+=speed;
+
+if(i>=end){
+i=end;
+clearInterval(timer);
+}
+
+document.getElementById(id).innerHTML=i+suffix;
+
+},30);
+}
+animate("students",100,"+");
+animate("teachers",4);
+animate("results",99,"%");
+animate("courses",3);
+</script>
+<button class="sigma-ai" onclick="startSigma()">
+🤖SIGMA ❤️ AI ֎✨ 
+</button>
+<div id="chatBox" style="display:none;position:fixed;bottom:90px;left:10px;right:10px;max-width:380px;margin:auto;background:rgba(15,23,42,.96);backdrop-filter:blur(20px);border-radius:24px;padding:18px;z-index:99999;box-shadow:0 15px 45px rgba(0,0,0,.4);color:white;">
+<div style="display:flex;justify-content:space-between;align-items:center;">
+<h2 style="margin:0;color:#35c3ff;">🤖 SIGMA AI ֎✨</h2>
+<span onclick="closeSigma()" style="cursor:pointer;font-size:28px;">✖</span>
+</div>
+
+<p><b>✨ Welcome to Maa Sarala Coaching Centre</b></p>
+
+<div style="background:#1e293b;padding:12px;border-radius:15px;margin:12px 0;">
+👋 Hello! I'm <b>SIGMA AI</b>. Ask me about admissions, fees, notes or timings.
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:15px 0;">
+<span class="sigmaQuick" onclick="showAdmission()">📘 Admission</span>
+<span class="sigmaQuick" onclick="showNotes()">📚 Notes</span>
+<span class="sigmaQuick" onclick="showTimings()">🕒 Timings</span>
+<span class="sigmaQuick" onclick="showContact()">📞 Contact</span>
+
+</div>
+<div id="chatMessages" style="height:180px;overflow-y:auto;margin-bottom:10px;"></div>
+<p style="color:#9ca3af;">💬 SIGMA AI is typing...</p>
+
+<div style="display:flex;gap:10px;">
+<input id="sigmaInput" placeholder="Ask anything..." style="flex:1;padding:14px;border:none;border-radius:30px;font-size:16px;">
+<button onclick="sendMessage()" style="background:linear-gradient(135deg,#0f6fff,#35c3ff);border:none;border-radius:50%;width:52px;height:52px;color:white;">➤</button>
+</div>
+</div></div>
+
+<script>
+  function closeSigma() {
+  document.getElementById("chatBox").style.display = "none";
+}
+function startSigma() {
+  document.getElementById("chatBox").style.display = "block";
+}
+function sendMessage() {
+    let input = document.getElementById("sigmaInput");
+    let text = input.value.trim();
+    let lower = text.toLowerCase();
+
+    if (text === "") return;
+
+    let chat = document.getElementById("chatMessages");
+
+    // Show user message
+    chat.innerHTML += `
+    <div style="text-align:right;margin:10px 0;">
+        <span style="background:#2563eb;color:white;padding:10px 14px;border-radius:12px;display:inline-block;">
+            ${text}
+        </span>
+    </div>`;
+
+    chat.scrollTop = chat.scrollHeight;
+    input.value = "";
+
+    // Built-in commands
+    if (lower.includes("admission")) {
+        showAdmission();
+        return;
+    }
+    if (lower.includes("fee")) {
+        showFee();
+        return;
+    }
+    if (lower.includes("notes")) {
+        showNotes();
+        return;
+    }
+    if (lower.includes("timing") || lower.includes("time")) {
+        showTimings();
+        return;
+    }
+    if (lower.includes("contact")) {
+        showContact();
+        return;
+    }
+
+    // Gemini AI
+    fetch("chat.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            message: text
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        chat.innerHTML += `
+        <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+            🤖 <b>SIGMA AI</b><br>
+            ${data.reply || "No response."}
+        </div>`;
+        chat.scrollTop = chat.scrollHeight;
+    })
+    .catch(() => {
+        chat.innerHTML += `
+        <div style="background:#dc2626;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+            ❌ Unable to connect to SIGMA AI backend.
+        </div>`;
+    });
+}
+function showFee() {
+    let chat = document.getElementById("chatMessages");
+
+    chat.innerHTML += `
+    <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+        🤖 <b>SIGMA AI</b><br>
+        💰 Monthly Fee: <b>₹99 only</b> (Online Student)
+    </div>`;
+
+    chat.scrollTop = chat.scrollHeight;
+}
+function showAdmission() {
+    document.getElementById("chatMessages").innerHTML += `
+    <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+        🤖 <b>SIGMA AI</b><br>
+        🎓 Admission Open!<br>
+        💰 Fee: <b>₹99/month</b><br>
+        📚 Classes: 8, 9 & 10
+    </div>`;
+}
+
+function showNotes() {
+    document.getElementById("chatMessages").innerHTML += `
+    <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+        🤖 <b>SIGMA AI</b><br>
+        📚 Study Notes are available. Please open the Notes section to download them.
+    </div>`;
+}
+
+function showTimings() {
+    document.getElementById("chatMessages").innerHTML += `
+    <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+        🤖 <b>SIGMA AI</b><br>
+        🕒 Morning & Evening batches are available.
+    </div>`;
+}
+
+function showContact() {
+    document.getElementById("chatMessages").innerHTML += `
+    <div style="background:#1e293b;color:white;padding:12px;border-radius:12px;margin:10px 0;">
+        🤖 <b>SIGMA AI</b><br>
+        📞 8249459018<br>
+        📧 maasaralacoaching@gmail.com
+    </div>`;
+}
+</script>
+</body>
+</html>
